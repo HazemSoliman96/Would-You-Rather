@@ -33,7 +33,7 @@ function QuestionNew(props) {
         content: ''
       });
     }
-    await props.handleSaveQuestion({
+    props.handleSaveQuestion({
       optionOne,
       optionTwo,
       author

@@ -16,10 +16,11 @@ export function InitialData() {
 }
 
 export function handleSaveQuestion(author) {
+  console.log(author);
   const question = {
     author: author.author,
-    optionOneText: author.optionOneText,
-    optionTwoText: author.optionTwoText
+    optionOneText: author.optionOne,
+    optionTwoText: author.optionTwo
   };
   return (dispatch) => {
     return saveQuestionApi(question).then((q) => {
