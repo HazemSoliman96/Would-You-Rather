@@ -20,12 +20,10 @@ class Login extends Component {
   }
 
   UserSelection = (event, data) => {
-    console.log(data)
     this.setState({ selectedUser: data.value });
   };
 
   UserLogin = () => {
-    console.log(this.state.selectedUser);
     const { history } = this.props;
     if (!this.state.selectedUser) {
       this.setState({
@@ -45,7 +43,6 @@ class Login extends Component {
     }
 
     this.props.setUser(this.state.selectedUser);
-    console.log(this.referrer)
     if (this.referrer === '/logout' || this.referrer === '/login') {
       history.push('/');
     } else {

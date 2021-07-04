@@ -4,11 +4,7 @@ import {
   saveQuestionAnswerApi
 } from '../utils/api';
 import { Users, saveUserAnswer, saveUserQuestion } from './users';
-import {
-  Questions,
-  saveQuestion,
-  saveQuestionAnswer
-} from './questions';
+import { Questions, saveQuestion, saveQuestionAnswer } from './questions';
 
 export function InitialData() {
   return (dispatch) => {

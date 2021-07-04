@@ -17,8 +17,7 @@ export default function questions(state = {}, action) {
         [action.question.id]: action.question
       };
     case SAVE_QUESTION_ANSWER:
-      const votes =
-        state[action.User.id][action.User.answer].votes;
+      const votes = state[action.User.id][action.User.answer].votes;
       return {
         ...state,
         [action.User.id]: {

@@ -25,66 +25,65 @@ function App(props) {
     setIndex(0);
   };
 
-  const history = useHistory()
+  const history = useHistory();
 
   useEffect(() => {
     const { InitialData } = props;
     InitialData();
-  },[props]);
+  }, [props]);
 
-    const { User } = props;
-    console.log(User)
-    if (!User) {
-      return (
-        <BrowserRouter>
-          <Switch>
-            <Route path="/" component={Login} />
-          </Switch>
-        </BrowserRouter>
-      );
-    }
-
+  const { User } = props;
+  if (!User) {
     return (
       <BrowserRouter>
-        <Fragment>
-          <Menu />
-          <div className="ui main text container" style={{ margin: '5em' }}>
-            <Switch>
-              <Route
-                path="/"
-                exact
-                render={() => {
-                  return (
-                    <QuestionList
-                      handleTabChange={handleTabChange}
-                      activeIndex={Index}
-                    />
-                  );
-                }}
-              />
-              <Route
-                path="/add"
-                render={() => {
-                  return (
-                    <QuestionNew
-                      resetActiveIndexToZero={resetIndexToZero}
-                      history={history}
-                    />
-                  );
-                }}
-              />
-              <Route path="/questions/:question_id" component={QuestionView} />
-              <Route path="/leaderboard" component={LeaderBoard} />
-              <Route path="/logout" component={Logout} />
-              <Route path="/404" component={PageNotFound} />
-              <Route path="/" component={PageNotFound} />
-            </Switch>
-          </div>
-          <Footer />
-        </Fragment>
+        <Switch>
+          <Route path="/" component={Login} />
+        </Switch>
       </BrowserRouter>
     );
   }
+
+  return (
+    <BrowserRouter>
+      <Fragment>
+        <Menu />
+        <div className="ui main text container" style={{ margin: '5em' }}>
+          <Switch>
+            <Route
+              path="/"
+              exact
+              render={() => {
+                return (
+                  <QuestionList
+                    handleTabChange={handleTabChange}
+                    activeIndex={Index}
+                  />
+                );
+              }}
+            />
+            <Route
+              path="/add"
+              render={() => {
+                return (
+                  <QuestionNew
+                    resetIndexToZero={resetIndexToZero}
+                    history={history}
+                  />
+                );
+              }}
+            />
+            <Route path="/questions/:question_id" component={QuestionView} />
+            <Route path="/leaderboard" component={LeaderBoard} />
+            <Route path="/logout" component={Logout} />
+            <Route path="/404" component={PageNotFound} />
+            <Route path="/" component={PageNotFound} />
+          </Switch>
+        </div>
+        <Footer />
+      </Fragment>
+    </BrowserRouter>
+  );
+}
 
 const mapStateToProps = (state) => {
   const { User } = state;

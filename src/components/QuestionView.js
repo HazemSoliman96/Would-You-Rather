@@ -13,7 +13,7 @@ import {
 import 'semantic-ui-css/semantic.min.css';
 import { handleAnswer } from '../actions/shared';
 import { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom';
 
 function QuestionView(props) {
   const [vote, setVote] = useState(null);
@@ -41,7 +41,6 @@ function QuestionView(props) {
     const id = props.match.params.question_id;
     const answer = vote;
     const { User, handleAnswer } = props;
-    console.log(props);
     handleAnswer({ User, id, answer });
   };
 
@@ -168,7 +167,7 @@ function QuestionView(props) {
       question.optionOne.votes.includes(User) ||
       question.optionTwo.votes.includes(User)
     );
-  }
+  };
 
   useEffect(() => {
     const { questions } = props;
@@ -180,14 +179,14 @@ function QuestionView(props) {
     }
   }, [props, push]);
 
-    let result;
-    if (didAnswer() === true) {
-      result = questionResult();
-    } else {
-      result = questionAnswer();
-    }
-    return <Card.Group centered>{result}</Card.Group>;
+  let result;
+  if (didAnswer() === true) {
+    result = questionResult();
+  } else {
+    result = questionAnswer();
   }
+  return <Card.Group centered>{result}</Card.Group>;
+}
 
 const mapStateToProps = (state) => {
   return {

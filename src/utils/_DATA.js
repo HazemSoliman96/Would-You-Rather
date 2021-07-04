@@ -193,9 +193,7 @@ export function _saveQuestionAnswer({ User }) {
           ...questions[User.id],
           [User.answer]: {
             ...questions[User.id][User.answer],
-            votes: questions[User.id][User.answer].votes.concat([
-              User.User
-            ])
+            votes: questions[User.id][User.answer].votes.concat([User.User])
           }
         }
       };
